@@ -1,0 +1,335 @@
+Comprehensive Specification & Operational Benchmark Guide: Database Systems Course Term Project
+
+1. Course Curriculum Integration & Strategic Grading Framework
+
+The Database Systems course is designed to bridge the gap between abstract relational database theory—such as relational algebra, functional dependencies, schema decompositions, multi-valued dependencies (A \twoheadrightarrow B), BCNF/4NF normal forms, and transaction isolation levels—and high-performance software engineering in modern production environments. While written examinations evaluate a student’s capacity to manually execute theoretical procedures like chase tests, closure calculations, or algebraic query transformations, the term project serves as the capstone applied component of the curriculum. It forces student engineering teams to synthesize system architecture, multi-tier client-server topologies, user interface design, and backend database administration into a unified, functional software platform.
+
+Course Evaluation Distribution Breakdown
+
+To align student effort with real-world engineering competencies, the academic evaluation structure assigns significant weight to practical execution alongside traditional testing:
+
+Assessment Component	Weight	Key Evaluation Focus
+Term Project (期末專題)	40%	Comprehensive application design, database engineering, external competition participation, live demonstration, and empirical peer review.
+Midterm Examination (期中考試)	30%	Theoretical mastery of Relational Algebra, SQL query syntax, E/R diagram translation, and core schema design.
+Final Examination (期末考試)	30%	Advanced theoretical concepts, including BCNF/4NF normalization, chase tests for lossless join decomposition, multi-valued dependencies, and transaction isolation anomalies.
+
+Analytical Evaluation ("So What?")
+
+A 40% weighting allocated to a single term project fundamentally alters student learning behaviors. In traditional computer science pedagogy where written exams account for 70% to 80% of the grade, students frequently resort to passive memorization and localized problem-solving without understanding how database engines behave under production application loads.
+
+By making the practical term project the single largest grading component (40%), students are incentivized to prioritize system architecture, data modeling, concurrency handling, and API integration over passive test preparation. This structural distribution ensures that theoretical knowledge evaluated during exams directly informs architectural decisions made within the project.
+
+For instance, understanding the mechanics of transaction isolation levels (SERIALIZABLE versus READ UNCOMMITTED) tested on examinations is precisely what prevents runtime lost updates or dirty reads in a student's concurrent mobile backend API. Similarly, mastering functional dependencies and Chase tests ensures that students design losslessly decomposed schemas that eliminate update anomalies when scaling their application database.
+
+This strategic alignment between grading incentives and practical software architecture leads directly into the explicit technical mandates established for the project.
+
+2. Architectural & Technical System Mandates
+
+To ensure that student projects reflect modern software engineering standards rather than static classroom exercises, the course mandates a set of non-negotiable architectural constraints. These engineering baseline requirements force student teams to confront modern infrastructure challenges, such as multi-tier network latency, automated data ingestion, client-side memory constraints, and concurrent transaction management.
+
+Core Engineering Specifications
+
+All term project submissions must strictly adhere to the following technical parameters:
+
+* Platform Deployment: Mandatory implementation of a mobile APP or tablet APP targeted for Android or iOS client devices (e.g., using Flutter or native mobile frameworks).
+* Database Management System (DBMS): Open selection of DBMS engine (unrestricted choice; teams may select relational engines such as PostgreSQL/MySQL or non-relational engines based on domain requirements).
+* Networked Infrastructure: Strictly MUST be a networked, multi-tier online application; single-machine or offline standalone implementations are explicitly prohibited.
+* Artificial Intelligence (AI) Integration: Mandatory integration of creative AI capabilities tailored specifically to enhance the core application logic.
+* Data Scale & Ingestion: Ingestion and active management of at least 200,000 records (20W+ records) sourced directly from Public/Open Data APIs or custom web scrapers.
+* Version Control: Mandatory open-source or managed repository hosting and version control on GitHub.
+* Department Hardware & Infrastructure Loans: Student teams are entitled to request hardware resources, consisting of one department tablet per group and one Virtual Machine (VM) instance, by submitting a formal application to Teaching Assistant Li-Wen (力文助教).
+
+Reference Architectural Benchmark: "SwapTeach: A Campus Skill-Exchange App" (換你教－校園技能交換 App)
+
+To ground these mandates in a concrete software blueprint, the course provides SwapTeach as an exemplary reference architecture. SwapTeach addresses campus peer-to-peer learning through a multi-tier engineering stack:
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   Mobile Client Tier (Flutter APP)                      │
+│      - Swipe-Card Matching UI     - Shared Timetable Schedule Sync      │
+│      - Real-Time Chat & Booking   - Personal Learning Portfolio Export  │
+└────────────────────────────────────┬────────────────────────────────────┘
+                                     │ HTTPS REST APIs / WebSockets
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   Application Tier (Python FastAPI)                     │
+│      - Circular Directed Graph Matching Algorithm (A -> B -> C -> A)      │
+│      - AI Lesson Plan Generation & Post-Class Quiz Generation (LLM API) │
+│      - Firebase Cloud Messaging (FCM) Push Notifications               │
+└────────────────────────────────────┬────────────────────────────────────┘
+                                     │ SQL Queries / ACID Transactions
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                  Database Tier (PostgreSQL Engine)                      │
+│      - Normalized Skill Cards & User Profiles Schema                   │
+│      - Time Coin Ledger Balance Ledger (ACID Concurrency Controls)       │
+│      - Indexed Multi-Table Joins & Spatial/Time Slot Indexing           │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+* Technology Stack: Mobile client built in Flutter (iOS/Android), backend application server powered by Python FastAPI, and database tier driven by PostgreSQL.
+* Core Architectural Innovations:
+  1. Graph Topology Matching: Beyond 1-on-1 direct skill trading, the server executes a directed graph search algorithm to identify circular matching loops (A \to B \to C \to A), where User A teaches B, B teaches C, and C teaches A.
+  2. Time Coin Transaction Ledger: Implements an hour-for-hour exchange ledger where teaching 1 hour earns 1 Time Coin. The database enforces strict transactional consistency to manage currency balances without race conditions.
+  3. AI Integration: Connects to Large Language Model (LLM) APIs to automatically generate tailored structured lesson plans (AI 學習計畫) based on user skill gaps and create post-class review quizzes (AI 課後回顧) from user session logs.
+
+Operational & Technical Analysis ("So What?")
+
+Enforcing a mandatory 200,000-record minimum dataset combined with a multi-tier client-server networked architecture transforms the project from a basic user interface prototype into a rigorous performance engineering challenge. Processing 200,000+ records exposes the immediate systemic consequences of flawed database design:
+
+1. Schema Normalization (BCNF / 4NF): Naive single-table schemas containing multi-valued dependencies (A \twoheadrightarrow B) experience massive data redundancy and severe update anomalies at 200,000 records. Structuring tables into BCNF/4NF is essential to eliminate duplicate data storage and maintain referential integrity across mobile update requests.
+2. Indexing & Join Optimization: Unindexed queries across 200,000 records trigger full-table scans that choke server CPU and memory. Teams must construct strategic composite B-Tree indexes to accelerate multi-table relational joins (R \bowtie S) and filtered aggregate queries (GROUP BY), maintaining sub-second API response times.
+3. Server-Side Pagination: Transmitting raw query results of 200,000 records over mobile wireless networks causes socket timeouts and crashes client application memory. Server-side SQL pagination (LIMIT / OFFSET or keyset pagination) is required to deliver chunked JSON payloads to mobile endpoints.
+
+Meeting these stringent architectural baselines requires rigorous task execution and structured timeline tracking across the academic term.
+
+3. Project Execution Timeline, Deliverables, & External Competition Mandates
+
+To manage development risk, eliminate last-minute code crunching, and enforce professional project management, the term project is structured across staged milestones across the semester.
+
+Sept 16: Group Formation (4-5 Students)
+  │
+  ├──► Sept 18, 17:00: ITSA Preliminary Registration Closes
+  ├──► Sept 01 - Sept 23: NCPC Fu Jen Preliminary Registration Window
+  │
+  ├──► OCT 03 (13:00-16:00): CRITICAL COMPETITION CONFLICT
+  │    [Choice: ITSA Geek Challenge OR NCPC Fu Jen Preliminary]
+  │
+  ├──► Nov 10: Midterm Proposal Presentation (5% Weight)
+  │
+  └──► Dec 22: Final Presentation & Live Classroom Demo (20% Weight)
+       └──► Submission of Mandatory Reflection Report (心得報告)
+
+
+Milestone & Deliverable Breakdown
+
+* Group Formation (September 16): Student teams of 4 to 5 members must be self-formed and officially registered on the first day of class.
+* Midterm Proposal Presentation (November 10, 2026): Accounts for 5% of the overall course grade. Requires creative presentation slides and an oral defense to formally confirm the project scope and system architecture.
+* Final Presentation & Live Demo (December 22, 2026): Accounts for 20% of the overall course grade. Requires a live classroom demonstration of the software application and oral defense before the instructor and peer evaluators.
+* External Competition Requirement (15%): Satisfies the remaining 15% weight of the term project score through mandatory participation in an approved external software competition.
+* Reflection Report Deliverable (心得報告): Teams participating in external competitions or displaying project outcomes are strictly required to submit a comprehensive formal Reflection Report (心得報告). This report documents architectural lessons learned, performance bottlenecks encountered during external judging, and software post-mortems.
+
+Approved External Competition Pathways
+
+Teams must fulfill the 15% external competition requirement by selecting one of the following official competitive pathways:
+
+                      ┌──► Option A: 2026 31st ICT Innovative Services Awards
+                      │    (第31屆大專校院資訊應用服務創新競賽)
+                      │
+External Competition ─┼──► Option B: ITSA Geek Challenge Preliminary
+  Pathway (15%)       │    (Oct 3, 13:00-16:00) [*Grants +3 Bonus Points to Final Grade*]
+                      │
+                      └──► Option C: 115 NCPC Fu Jen Preliminary
+                           (Oct 3, 13:00-16:00) [*Coached by Prof. Shin-Hung Chang*]
+
+
+* Option A: 2026 31st International ICT Innovative Services Awards (第31屆大專校院資訊應用服務創新競賽)
+  * National-level competition encouraging ICT service innovation across tertiary institutions across大会專題類 and 國際交流類 categories.
+* Option B: ITSA Geek Challenge Preliminary (ITSA極客挑戰賽初賽)
+  * Team Structure: Teams of 1 to 3 students.
+  * Registration Period: Closes September 18 at 17:00.
+  * Competition Date & Time: October 3, 2026, from 13:00 to 16:00.
+  * Grade Incentive: Successful completion awards an additional +3 bonus points directly added to the student's overall final course grade.
+* Option C: 115 Academic Year NCPC Fu Jen Preliminary (全國大專電腦軟體程式競賽 NCPC 輔大初賽)
+  * Team Structure: Teams of exactly 3 students.
+  * Registration Period: September 1 to September 23.
+  * Competition Date & Time: October 3, 2026, from 13:00 to 16:00 (3-hour duration).
+  * Official Team Coach: Prof. Shin-Hung Chang (張信宏), Department of Computer Science & Information Engineering, Fu Jen Catholic University (Tel: 02-29053894, Email: shchang@csie.fju.edu.tw).
+
+⚠️ CRITICAL SCHEDULING CONFLICT ALERT: The 2026 ITSA Geek Challenge Preliminary and the 115 NCPC Fu Jen Preliminary are scheduled simultaneously on October 3, 2026, from 13:00 to 16:00. Because these competitive events occur at the exact same time, student teams selecting local contest tracks are strictly forced to choose exactly one of these two competition pathways.
+
+Analytical Evaluation ("So What?")
+
+Mandating external competition participation (15% of the grade) alongside a formal Reflection Report (心得報告) prevents academic insularity. In isolated classroom settings, students frequently construct minimal viable prototypes designed merely to satisfy an instructor's superficial checklist.
+
+External competition panels and industry judges evaluate applications against production standards, commercial viability, real-world utility, user interface responsiveness, and technical resilience under stress. Competing on a national stage forces teams to implement rigorous software development lifecycles, write edge-case test suites, and refine technical presentations, yielding portfolio-grade software applications.
+
+Managing project execution against external metrics requires a transparent, objective peer review framework during classroom presentations.
+
+4. Student Peer Review Framework & Classroom Governance Rules
+
+To foster objective evaluation, prevent grade inflation, and cultivate critical technical evaluation skills, the course uses a peer-driven review model. Student teams present their midterm proposals and final systems before the entire student body, who evaluate their peers under strict administrative governance rules.
+
+Peer Grading Mathematical Formula
+
+The peer evaluation score for any presentation milestone is calculated using the following mathematical formula:
+
+\text{Peer Score} = 100 \times \left(1 - \frac{\text{Total "X" Marks Received}}{\text{Total Evaluators}}\right)
+
+Where:
+
+* Total "X" Marks Received represents the cumulative count of negative/rejection marks assigned to the presenting group by voting peer evaluators.
+* Total Evaluators represents the total number of valid student evaluation forms submitted during that session (e.g., 68 submitted forms out of 70 enrolled students).
+
+Operational Scope: This exact peer evaluation formula applies to BOTH the Midterm Proposal Presentation (5%) and the Final Presentation & Live Demo (20%). Furthermore, for teams displaying project results or competing externally, the submission of the formal Reflection Report (心得報告) serves as a required supplementary deliverable to finalize these peer scores.
+
+Presentation Day Operational Governance Rules
+
+To ensure fairness, efficiency, and professional decorum during presentation sessions, the following operational rules are enforced without exception:
+
+* Student-Elected Moderator: Presentation flow and session transitions are managed entirely by a student elected by peers to serve as master of ceremonies/host.
+* Strict Punctuality & Late Arrival Penalty: All group presentations occur within a single dedicated class session. The moment presentations begin, evaluation forms are permanently locked and will no longer be distributed. Late-arriving students are treated as absent.
+* Restroom Policy & Score Confiscation: Restroom breaks during presentation sessions are limited strictly to 2 minutes. If a student is absent during any single group's presentation, their evaluation sheet is immediately confiscated, they are marked officially absent, and all forced "X" penalties are charged directly against their own personal project score.
+* Absentee Penalty: Students marked absent are barred from evaluating peers and will automatically receive the maximum negative "X" penalty count charged directly against their personal grade.
+
+Evaluator Quotas & Quality Requirements
+
+* Forced "X" Quota: To counteract universal high-scoring collusion, every student evaluator MUST assign a minimum of 5 "X" marks across all group presentations. This baseline quota is derived from a standard cohort of 15 presenting groups:
+
+\text{Forced "X" Quota} = 15 \text{ groups} \times \frac{1}{3} = 5 \text{ "X" marks}
+
+(Note: If the total number of presenting groups increases, the required forced "X" mark quota scales upward proportionately).
+
+* Mandatory Written Justification: Every assigned "X" mark MUST be accompanied by an objective, written technical or presentation critique on the evaluation sheet. Arbitrary, subjective, or personal excuses (e.g., "I dislike the speaker," "unpleasant speaking voice") are strictly forbidden and will be invalidated by the instructor.
+
+Topic Rejection & Revision Action Thresholds
+
+Based on a standard benchmark cohort size of 70 enrolled students yielding 68 valid submitted evaluation forms, projects receiving high counts of negative "X" marks trigger mandatory academic interventions:
+
+Received "X" Mark Count	Percentage Rejection Threshold	Mandatory Academic Outcome / Governance Action
+> 25 "X" Marks	~36.8% Peer Rejection	Official Recommendation to Change Topic (建議換題目): System design exhibits major conceptual flaws or minimal domain value; scope revision strongly advised.
+> 34 "X" Marks	> 50.0% Peer Rejection	Mandatory Topic Rejection & Re-proposal Required (需重提): Project rejected by an absolute majority; team must submit a completely revised project proposal.
+
+"X" Count:  0 ─────────────── 25 ───────────────── 34 ───────────────────── 68
+Status:     [  Passed / OK  ] [ Suggest Change Topic ] [ Mandatory Re-Proposal ]
+
+
+Analytical Evaluation ("So What?")
+
+Without strict governance rules, student peer grading rapidly degrades into reciprocal grade inflation, where every team awards maximum scores to every other team.
+
+By enforcing a forced "X" quota (minimum 5 "X"s) alongside mandatory written technical justifications, students are forced to critically evaluate their peers' database normalization, system architecture, UI responsiveness, and live demonstration performance.
+
+Furthermore, strict administrative penalties associated with missing presentations, restroom delays (>2 minutes), or late arrivals instill professional discipline. The action thresholds (>25 "X"s for topic change recommendation; >34 "X"s for mandatory re-proposal) establish an immediate quality control loop, ensuring that unviable concepts are filtered out early in the semester.
+
+The operational reality of these classroom governance metrics is best understood through historical peer evaluation dataset performance.
+
+5. Historical Project Case Studies & Empirical Performance Analysis
+
+Analyzing historical benchmark data from prior student cohorts provides critical insight into how peer review mechanics function in practice. It illustrates the precise project characteristics that earn peer approval versus those that trigger severe peer rejection.
+
+Historical Benchmark Evaluation Dataset
+
+The following dataset documents 15 benchmark term projects evaluated under a standard cohort configuration (70 enrolled students, 68 active peer evaluators):
+
+Group ID	Project Title (Official Chinese / English)	"X" Count Received	Result Status / Official Academic Guidance
+Group 1	線上影音平台電影查詢 (Online Video Platform Movie Query)	8	Passed
+Group 2	LinkAd，幫你找到廣告搭檔 (LinkAd: Find Ad Partners)	22	Passed
+Group 3	開店指南APP (Store Opening Guide APP)	22	Passed
+Group 4	流浪動物整合 (Stray Animal Integration)	27	Exceeded 25: Official Guidance to Change Topic
+Group 5	下載 Torrent 檔的網站 (Torrent Download Website)	23	Passed
+Group 6	寵物友善APP (Pet Friendly APP)	13	Passed
+Group 7	音樂搜尋軟件 (Music Search Software)	41	Exceeded 34: Mandatory Re-proposal Required
+Group 8	瘦身規劃app (Weight Loss Planning APP)	51	Exceeded 34: Mandatory Re-proposal Required
+Group 9	codzy 線上自主學習 (codzy Online Autonomous Learning)	8	Passed
+Group 10	手搖達人 (Hand-shaken Drink Master)	58	Exceeded 34: Extreme Rejection / Mandatory Re-proposal
+Group 11	Chalish (chanllenge+englis	1	Top Tier / Highly Approved
+Group 12	租屋分析系統-租哥孔明 (Rental Analysis - Zhuge Kongming)	0	Perfect Score / Benchmark Standard
+Group 13	藥物查詢 (Medicine Query)	30	Exceeded 25: Official Guidance to Change Topic
+Group 14	輯軟體 音樂剪輯軟體 (Music Editing Software)	13	Passed
+Group 15	夢中情人模擬機 (Dream Lover Simulator)	6	Passed
+
+Comparative Performance Categorization
+
+                          HISTORICAL PERFORMANCE SPECTRUM
+                                  (68 Evaluators)
+
+  Perfect / Exemplar Tier         Borderline / At-Risk            Extreme Peer Rejection
+     (0 - 8 "X" Marks)             (22 - 30 "X" Marks)              (34 - 58 "X" Marks)
+ ┌───────────────────────┐       ┌───────────────────────┐       ┌───────────────────────┐
+ │ Group 12: 0 "X"       │       │ Group 02: 22 "X"      │       │ Group 07: 41 "X"      │
+ │ Group 11: 1 "X"       │       │ Group 03: 22 "X"      │       │ Group 08: 51 "X"      │
+ │ Group 15: 6 "X"       │       │ Group 05: 23 "X"      │       │ Group 10: 58 "X"      │
+ │ Group 01: 8 "X"       │       │ Group 04: 27 "X"      │       └───────────────────────┘
+ │ Group 09: 8 "X"       │       │ Group 13: 30 "X"      │
+ └───────────────────────┘       └───────────────────────┘
+
+
+1. High-Performing Exemplar Benchmarks (0–8 "X" Marks)
+
+* Group 12 (Rental Analysis System - Zhuge Kongming / 租屋分析系統-租哥孔明) — 0 "X" Marks: Achieved a perfect score. The project succeeded by delivering complex spatial and pricing analytical queries, dynamic data integration across rental markets, and high practical utility, setting the gold standard for database application engineering.
+* Group 11 (Chalish (chanllenge+englis) — 1 "X" Mark: Received overwhelming peer approval due to its gamified language learning mechanics backed by optimized user progress tracking schemas.
+* Reference Architecture Comparison (SwapTeach / 換你教): SwapTeach aligns with this top tier by incorporating circular graph matching (A \to B \to C \to A), transactional Time Coin ledgers, and automated LLM lesson plan generation over a normalized PostgreSQL schema.
+
+2. Borderline / At-Risk Projects (22–30 "X" Marks)
+
+* Group 4 (Stray Animal Integration / 流浪動物整合) — 27 "X" Marks: Crossed the 25 "X" threshold, triggering an official recommendation to change topic. Evaluators noted that despite its positive social intent, the system functioned as a shallow data wrapper over public APIs without custom relational schema complexity or advanced querying logic.
+* Group 13 (Medicine Query / 藥物查詢) — 30 "X" Marks: Received 30 "X"s due to minimal backend database depth, with peers evaluating the application as a simple table lookup utility.
+
+3. Failed / Rejected Projects (34–58 "X" Marks)
+
+* Group 10 (Hand-shaken Drink Master / 手搖達人) — 58 "X" Marks: Suffered catastrophic peer rejection (85.3% rejection rate). Evaluators overwhelmingly rejected the project because aggregate menus for beverage stores lack relational complexity, query challenge, or functional utility.
+* Group 8 (Weight Loss Planning APP / 瘦身規劃app) — 51 "X" Marks & Group 7 (Music Search Software / 音樂搜尋軟件) — 41 "X" Marks: Both exceeded the majority rejection threshold (>50%), requiring mandatory re-proposals due to generic concepts, overused ideas, and minimal database schema engineering.
+
+Critical Empirical Lessons ("So What?")
+
+An analysis of this historical dataset demonstrates a clear correlation: peer rejection is directly proportional to triviality of application logic and a lack of underlying database complexity.
+
+Projects that attempt to pass by building basic read-only wrappers over public datasets (e.g., simple pet listings or drug lookup tables) or overused consumer utilities (e.g., drink ordering or calorie counters) are recognized by peers as lacking technical rigor.
+
+Conversely, top-performing applications integrate complex transactional relational schemas, custom graph or matching algorithms, real-time filtering across multi-table joins, and domain-specific analytical capabilities.
+
+To avoid project rejection, teams must maintain internal accountability and administrative discipline from the outset.
+
+6. Team Governance, Individual Accountability, & Requisition Protocols
+
+Executing a multi-tier software engineering project requires clear administrative structure, equitable workload distribution, and uncompromising individual accountability. Course guidelines establish explicit boundaries regarding group formation and departmental resource allocation.
+
+Group Formation Rules & Self-Reliance Mandate
+
+* Mandatory Team Sizing: Teams must consist strictly of 4 to 5 students.
+* Registration Deadline: Group rosters must be finalized on the first day of class (September 16).
+* Professor's Mandate on Individual Accountability: Course instructor Prof. Shin-Hung Chang (張信宏教授) enforces a strict zero-tolerance policy regarding team-finding excuses. Students are entirely and individually responsible for securing their own team members prior to the deadline. Prof. Chang explicitly issued the following warning to the class:
+
+"分組的部分就請各位同學自己好幫我自己找，下禮拜不要說我老師我找不到，我人員不好，那你自己的事這樣可以嗎？"
+
+(Translation: "Regarding group formation, please find your own teammates. Next week, do not come to me saying 'Professor, I cannot find a group' or 'I have poor interpersonal skills'—that is strictly your personal issue.")
+
+Personal excuses regarding team formation will not excuse non-compliance with project deadlines or technical requirements.
+
+Resource Requisition Protocols
+
+To support mobile client-server development, the department provides hardware and server infrastructure loans under the following procedure:
+
+                          RESOURCE REQUISITION FLOW
+
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                        Student Team                             │
+    │                   (4 to 5 Registered Members)                   │
+    └────────────────┬────────────────────────────────────────────────┘
+                                     │
+                                     ▼
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                      Formal Application                         │
+    │            Submitted to Teaching Assistant Li-Wen               │
+    │                       (力文助教)                                │
+    └────────────────┬────────────────────────────────┬───────────────┘
+                     │                                │
+                     ▼                                ▼
+    ┌─────────────────────────────────┐ ┌─────────────────────────────┐
+    │         Hardware Loan           │ │      Server Infrastructure  │
+    │  1x Department Tablet / Pad     │ │  1x Dedicated Virtual Machine│
+    │           Per Group             │ │        (VM) Instance        │
+    └─────────────────────────────────┘ └─────────────────────────────┘
+
+
+1. Eligible Hardware/Server Assets: Each registered team may request:
+  * One (1) Department Tablet/Pad for mobile testing and presentation demonstrations.
+  * One (1) Dedicated Virtual Machine (VM) server instance for backend database hosting and API deployment.
+2. Application Procedure: Requisition requests must be submitted directly to Teaching Assistant Li-Wen (力文助教) following initial team registration.
+
+Analytical Evaluation ("So What?")
+
+Enforcing rigid team sizing (4–5 members), early deadlines, strict hardware requisition protocols, and a zero-tolerance policy for interpersonal excuses mirrors real-world software engineering management. In professional development environments, engineering leads do not accept interpersonal discomfort or passive inaction as valid justifications for missed delivery dates.
+
+Forcing students to take full ownership of team formation, secure server infrastructure through departmental channels, manage source code via GitHub, and build scalable database architectures cultivates both the technical capabilities and professional accountability required for software engineering careers.
+
+Summary Roadmap for Term Project Success
+
+To achieve an outstanding evaluation on the term project, student engineering teams should execute against the following strategic roadmap:
+
+1. Form Team Immediately (by Sept 16): Assemble 4–5 members and submit hardware tablet and VM server loan applications to TA Li-Wen (力文助教).
+2. Select Non-Trivial Topics: Avoid generic CRUD wrappers or menu viewers (e.g., Hand-shaken Drink Master); choose complex, data-rich domains requiring analytical queries, spatial operations, or dynamic matching algorithms (e.g., Zhuge Kongming Rental Analysis or SwapTeach).
+3. Target 200,000+ Records & Networked Architecture: Design BCNF/4NF normalized schemas, composite B-Tree indexes, and paginated HTTP REST APIs capable of processing 200,000+ records cleanly across client-server connections.
+4. Integrate Creative AI Capabilities: Embed generative or predictive AI features (e.g., automated lesson planning or dynamic quiz generation) directly into the core domain logic.
+5. Execute External Competition Requirement: Register for either the ICT Awards, the ITSA Preliminary (+3 bonus points, Oct 3), or the NCPC Fu Jen Preliminary (Oct 3, coached by Prof. Shin-Hung Chang), carefully managing the October 3 scheduling conflict.
+6. Satisfy Presentation & Report Governance: Deliver polished pitch slides for the November 10 proposal presentation (5%) and a robust live software demonstration for the December 22 final presentation (20%). Compile and submit the mandatory Reflection Report (心得報告) to capture system post-mortems and finalize all peer review scores.

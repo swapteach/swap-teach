@@ -1,0 +1,8 @@
+# 個人檔案（不進版本控制）/ Personal files (never committed)
+.local/
+CLAUDE.local.md
+
+# 系統檔 / OS files
+.DS_Store
+Thumbs.db
+~$*
