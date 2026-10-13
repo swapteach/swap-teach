@@ -26,7 +26,7 @@
 
 1. **一處改，處處改。** 改完一個文件後，搜尋整個 repo（略過 `en/`）中所有相關內容並一起更新，避免文件互相矛盾。例如：改了某個功能 → 檢查 `docs/project/`、`CONTEXT.md`、`docs/course/` 中的要求對照。
 2. 不可修改 `reference/` 中的原始檔，也不可修改 `docs/competition/submissions/`（已提交的凍結版本）。
-3. 課程規定以 `reference/` 中的官方投影片 PDF 與課程大綱 PDF 為準。`reference/` 中的 `.txt` 是非官方、AI 生成的文件，**不可作為依據**。
+3. 課程規定以 `reference/` 中的官方投影片 PDF 與課程大綱 PDF 為準。`reference/` 中的 `Comprehensive Specification…txt` 是非官方、AI 生成的文件，**不可作為依據**。第一堂課逐字稿（`reference/2026-09-15-第一堂課逐字稿.txt`）是老師口頭說明的語音辨識結果，可作為補充，但與官方文件不一致時以官方為準，並標記「⚠️ 待確認」。
 4. 發現文件之間有矛盾或資訊不確定時，不要自己猜：在文件中標記「⚠️ 待確認」，並告訴使用者。
 5. 重大且難以逆轉的決策，在 `docs/adr/` 新增一份 ADR（格式見 [docs/adr/README.md](docs/adr/README.md)），並在 LOG.md 連結它。
 

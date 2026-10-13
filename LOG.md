@@ -4,6 +4,14 @@
 
 ---
 
+## 2026-10-13 — 新增第一堂課逐字稿與重點整理
+
+- **作者：** Antony
+- **變更：** 在 `reference/` 新增第一堂課（2026-09-15）的語音轉文字逐字稿，並整理成 [docs/course/first-lecture.md](docs/course/first-lecture.md)。依老師的口頭說明更新評分與要求文件：解決「競賽 15% 或 20%」與「不到 0.01」兩個待確認項目；補充互評的三個面向（完整度、創意、可用性）、「屍體」規則、沒參加比賽最高 85 分、歷屆專題被打 X 的原因、APP 優先與先查有沒有人做過。AGENTS.md 中「`.txt` 不可作為依據」的規則改為只指 AI 生成的那份 `.txt`。
+- **原因：** 投影片只有規則與 X 數，逐字稿有老師的解釋；這些資訊對選題很重要。
+- **檔案：** `reference/2026-09-15-第一堂課逐字稿.txt`、`reference/README.md`、`docs/course/first-lecture.md`、`docs/course/grading.md`、`docs/course/requirements.md`、`docs/course/timeline.md`、`AGENTS.md`
+- **決策：** 逐字稿可作為補充資料，但與官方投影片、課程大綱不一致時以官方為準。
+
 ## 2026-10-05 — 建立專案文件架構
 
 - **作者：** Antony
