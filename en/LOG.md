@@ -1,4 +1,4 @@
-<!-- mirror-of: LOG.md @ 4ec2e808a8c6c4417cff5d589da5143b689efe0f -->
+<!-- mirror-of: LOG.md @ 9f3e7e261689eea75be74350c9b6f782faa2996e -->
 > 🌐 English mirror of [LOG.md](../LOG.md). The Chinese version is authoritative.
 
 # Change and decision log
@@ -6,6 +6,14 @@
 Newest entries at the top. Format in [AGENTS.md](AGENTS.md#logmd). Only meaningful changes are logged; see git history for small fixes. Search for "**決策**" (Decision) to find every decision.
 
 ---
+
+## 2026-10-13 — Add first-lecture transcript and summary
+
+- **Author:** Antony
+- **Change:** Added the speech-to-text transcript of the first lecture (2026-09-15) to `reference/` and summarized it in [docs/course/first-lecture.md](docs/course/first-lecture.md). Updated the grading and requirements docs from the professor's spoken explanations: resolved the "competition 15% or 20%" and "below 0.01" open items; added the three peer-review criteria (completeness, creativity, usability), the "corpse" rule, the 85-point cap without a competition, the reasons past projects got X marks, the app-first preference, and checking for prior work. Narrowed the AGENTS.md rule "`.txt` files are not a source" to the AI-generated `.txt` only.
+- **Why:** The slides only have rules and X counts; the transcript has the professor's explanations, which matter for choosing a topic.
+- **Files:** `reference/2026-09-15-第一堂課逐字稿.txt`, `reference/README.md`, `docs/course/first-lecture.md`, `docs/course/grading.md`, `docs/course/requirements.md`, `docs/course/timeline.md`, `AGENTS.md`
+- **Decision:** The transcript can be used as supplementary material, but the official slides and syllabus win wherever they disagree.
 
 ## 2026-10-05 — Set up project documentation structure
 

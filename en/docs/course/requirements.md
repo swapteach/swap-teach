@@ -1,9 +1,9 @@
-<!-- mirror-of: docs/course/requirements.md @ 4ec2e808a8c6c4417cff5d589da5143b689efe0f -->
+<!-- mirror-of: docs/course/requirements.md @ 9f3e7e261689eea75be74350c9b6f782faa2996e -->
 > 🌐 English mirror of [docs/course/requirements.md](../../../docs/course/requirements.md). The Chinese version is authoritative.
 
 # Course and project requirements
 
-Sources: the official slides `reference/115-1-Database_評分規定.pdf` and the syllabus `reference/Database Systems Syllabus.pdf`. Grading is in [grading.md](grading.md), dates in [timeline.md](timeline.md).
+Sources: the official slides `reference/115-1-Database_評分規定.pdf` and the syllabus `reference/Database Systems Syllabus.pdf`. Grading is in [grading.md](grading.md), dates in [timeline.md](timeline.md). The professor's spoken additions from the first lecture are in [first-lecture.md](first-lecture.md) (unofficial transcript).
 
 ## Course info
 
@@ -26,15 +26,23 @@ The term project theme is "Creative App Project Design": a tablet or phone app t
 |---|---|---|
 | 1 | Groups of 4–5, self-formed on the first day of class (9/16) | ✅ Group formed |
 | 2 | Use a database (any DBMS) | ✅ Planning PostgreSQL |
-| 3 | **Networked**, not a standalone offline app | ✅ Planned as app + cloud backend |
-| 4 | **Include AI features** (be creative) | ✅ AI match recommendations, AI Lesson Plan, AI Session Review |
-| 5 | **200,000+ records** from public data, open data, or your own scraping | ⚠️ **Unresolved**, see [project overview](../project/overview.md#open-issues) |
+| 3 | **Networked**, not a standalone offline app (the department VM or a free cloud service are both fine) | ✅ Planned as app + cloud backend |
+| 4 | **Include AI features** (be creative; using someone else's AI API is fine) | ✅ AI match recommendations, AI Lesson Plan, AI Session Review |
+| 5 | **200,000+ records** from public data, open data, or your own scraping, obtained legally (⚠️ in the first lecture he said "2.2 million fields", see [first-lecture.md](first-lecture.md#project-requirements)) | ⚠️ **Unresolved**, see [project overview](../project/overview.md#open-issues) |
 | 6 | Use GitHub | ✅ This repo (not using GitHub costs −5 points) |
 | 7 | May borrow one department tablet per group + one VM; apply to TA 力文 | ⚠️ Not yet decided whether to apply |
 
+## Spoken additions from the first lecture
+
+From the first-lecture transcript (unofficial); details in [first-lecture.md](first-lecture.md).
+
+- **An app is preferred.** Not building an app (e.g. a website) needs a reason why it's more creative than an app; "I want to build a website" with no reason is not accepted.
+- **Check whether it's been done.** Before settling on a topic, research existing similar products and how far they go.
+- **The database design process must be visible** (e.g. on GitHub); otherwise classmates can give X for it.
+
 ## Other rules in the syllabus
 
-- **⚠️ To confirm:** the syllabus says "you will be required to write a JAVA program on Android platform." We plan to use Flutter (Dart) and Python, so we need to check whether the professor accepts that. The slides' project requirements don't restrict the language.
+- **⚠️ To confirm:** the syllabus says "you will be required to write a JAVA program on Android platform." We plan to use Flutter (Dart) and Python, so we need to check whether the professor accepts that. The slides' project requirements don't restrict the language, and in the first lecture the professor said of the Android textbook "anything you can get started with is OK", so he doesn't seem strict, but it still needs confirming.
 - **⚠️ To confirm:** the syllabus evaluation section says "must enter the 2025 30th ICT Innovative Services Awards"; the year looks stale. The slides say the 2026 31st edition.
 - **Academic integrity:** projects must be your own work. You may discuss with faculty and TAs, and discuss general concepts with classmates, but not share designs or implementations. Violations may fail the assignment or the whole course.
 - The syllabus calls the term project a "micro collaboration between industry and school".

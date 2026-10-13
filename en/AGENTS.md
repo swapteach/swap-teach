@@ -1,4 +1,4 @@
-<!-- mirror-of: AGENTS.md @ 4ec2e808a8c6c4417cff5d589da5143b689efe0f -->
+<!-- mirror-of: AGENTS.md @ 9f3e7e261689eea75be74350c9b6f782faa2996e -->
 > 🌐 English mirror of [AGENTS.md](../AGENTS.md). The Chinese version is authoritative and is the one AI tools actually read.
 
 # AI collaboration rules
@@ -29,7 +29,7 @@ Users may not remind you of these rules every time. **Follow them on your own.**
 
 1. **Change it once, change it everywhere.** After editing a doc, search the whole repo (skipping `en/`) for related content and update it too, so docs never contradict each other. E.g. if a feature changes, check `docs/project/`, `CONTEXT.md`, and the requirements table in `docs/course/`.
 2. Never modify the original files in `reference/` or anything in `docs/competition/submissions/` (frozen as submitted).
-3. Course rules come from the official slides PDF and the syllabus PDF in `reference/`. The `.txt` in `reference/` is unofficial and AI-generated; **never rely on it**.
+3. Course rules come from the official slides PDF and the syllabus PDF in `reference/`. The `Comprehensive Specification…txt` in `reference/` is unofficial and AI-generated; **never rely on it**. The first-lecture transcript (`reference/2026-09-15-第一堂課逐字稿.txt`) is a speech-to-text record of the professor's spoken explanations; it can be used as a supplement, but where it disagrees with the official documents, the official ones win and the difference is marked "⚠️ 待確認".
 4. If docs contradict each other or information is uncertain, don't guess: mark it "⚠️ 待確認" (to be confirmed) in the doc and tell the user.
 5. For a major, hard-to-reverse decision, add an ADR in `docs/adr/` (format in [docs/adr/README.md](docs/adr/README.md)) and link it from LOG.md.
 

@@ -1,4 +1,4 @@
-<!-- mirror-of: docs/course/timeline.md @ 4ec2e808a8c6c4417cff5d589da5143b689efe0f -->
+<!-- mirror-of: docs/course/timeline.md @ 9f3e7e261689eea75be74350c9b6f782faa2996e -->
 > 🌐 English mirror of [docs/course/timeline.md](../../../docs/course/timeline.md). The Chinese version is authoritative.
 
 # Timeline
@@ -8,7 +8,7 @@ Sources: official slides and syllabus. Add the competition's later dates once kn
 | Date | Event | Status |
 |---|---|---|
 | 2026-09-16 | Group formation deadline (4–5 people) | ✅ |
-| 2026-09-18 17:00 | ITSA Geek Challenge preliminary registration closes | — |
+| 2026-09-18 17:00 | ITSA Geek Challenge preliminary registration closes (⚠️ the professor said 9/11 in the first lecture, see [first-lecture.md](first-lecture.md#other)) | — |
 | 2026-09-23 | NCPC Fu Jen preliminary registration closes | — |
 | 2026-10-03 | ICT Innovative Services Awards registration closes | ✅ Registered (see [competition](../competition/ict-2026.md)) |
 | 2026-10-03 13:00–16:00 | ITSA preliminary / NCPC Fu Jen preliminary | — |

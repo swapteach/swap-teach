@@ -1,9 +1,9 @@
-<!-- mirror-of: docs/course/grading.md @ 4ec2e808a8c6c4417cff5d589da5143b689efe0f -->
+<!-- mirror-of: docs/course/grading.md @ 9f3e7e261689eea75be74350c9b6f782faa2996e -->
 > 🌐 English mirror of [docs/course/grading.md](../../../docs/course/grading.md). The Chinese version is authoritative.
 
 # Grading
 
-Source: the official slides `reference/115-1-Database_評分規定.pdf`.
+Source: the official slides `reference/115-1-Database_評分規定.pdf`. The professor's spoken additions from the first lecture are in [first-lecture.md](first-lecture.md) (unofficial transcript).
 
 ## Semester grade
 
@@ -23,7 +23,9 @@ Source: the official slides `reference/115-1-Database_評分規定.pdf`.
 | Final oral exam | 20% | 2026-12-22 (one week before finals) | In-class demo + oral defense |
 | External competition | 15% | — | See below |
 
-**⚠️ To confirm:** slide 6 gives the competition 15%; slide 7 says "national competition (20%)". Since 5% + 20% + 15% = 40%, 15% is the more likely figure.
+Slide 6 gives the competition 15%; slide 7 says "national competition (20%)". In the first lecture the professor explained that it used to be competition 20% and presentation 15%, and he moved 5% to peer review, so it is now **final presentation 20%, external competition 15%** (see [first-lecture.md](first-lecture.md#external-competition)).
+
+**Without entering any competition, the term project maxes out at 85 points** (said in the first lecture).
 
 ## External competition scoring
 
@@ -49,6 +51,11 @@ Eligible competitions: (1) the 2026 31st ICT Innovative Services Awards (registr
 - **Absent students can't evaluate, and the X count is charged to the absent student.**
 - Each evaluator must give at least 5 X marks (15 groups × 1/3 = 5); more groups means more.
 - Every X needs a written reason about the presentation or the work itself ("I dislike the presenter" or "unpleasant voice" are not valid).
+- The professor added in the first lecture (unofficial transcript, see [first-lecture.md](first-lecture.md#midterm-and-final-presentations)):
+  - Scoring covers three criteria: **completeness, creativity, usability**.
+  - Valid X reasons include: the UI isn't good-looking, low usability, wrong database record count, not using GitHub, **no visible database design process**.
+  - Canvassing or colluding (e.g. asking people not to give you X) puts those X marks on the colluders' own group.
+  - A group with no working product, or whose demo crashes midway, is a "corpse" (屍體) and isn't evaluated; a group with no product won't pass.
 
 ### Thresholds (example: 70 students, 68 evaluation sheets)
 
@@ -77,13 +84,15 @@ Eligible competitions: (1) the 2026 31st ICT Innovative Services Awards (registr
 | 14 | Music editing software | 13 |
 | 15 | Dream lover simulator | 6 |
 
+More X marks means a lower score. In the first lecture the professor explained why several of these got X marks (useless, overpromised, copied existing products, untrustworthy); see [first-lecture.md](first-lecture.md#past-projects-why-they-got-x-marks).
+
 ## Contribution split within the group
 
 The group score is split among members by peer-assessed contribution. Each member fills in one column, giving every member (including themselves) a share; shares sum to 1.
 
 - **Adjustment:** for member i, X_i = (average share given to i by all members) − 1/(group size)
 - **Individual score:** group score × (1 + X_i)
-- The slides also say "below 0.01 → evaluation removed". ⚠️ Meaning to confirm.
+- The slides also say "below 0.01 → evaluation removed". The professor explained in the first lecture: if someone is given 0.001, they are treated as having done nothing and **get 0 for the term project**.
 
 Example (4 members, group score 70): C receives 0.3, 0.25, 0.2, 0.3; average 0.2625; X = 0.0125; score = 70 × 1.0125 ≈ 71.
 
@@ -94,7 +103,7 @@ Special cases in the slides:
 | Everyone gives 0.25 | Everyone gets the group score |
 | Everyone gives only themselves 1 | Whole group gets 0 ("nonsense") |
 | All zeros | Whole group gets 0 |
-| Two cliques giving only to each other | Group score halved ("messing around") |
+| Two cliques giving only to each other | Group score halved ("messing around"); the professor said this was a joke and has never happened |
 
 ## Programming contest bonuses (added to the semester grade)
 
